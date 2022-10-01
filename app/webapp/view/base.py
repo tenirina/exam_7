@@ -4,7 +4,7 @@ from webapp.models import Book
 
 
 def index_view(request):
-    records = Book.objects.filter(is_delete=False, status=Book.CHOICES[0][0]).order_by('created_at')
+    records = Book.objects.filter(is_delete=False, status=Book.CHOICES[0][0]).order_by('created_at')[::-1]
     context = {
         "records": records
     }
