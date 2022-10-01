@@ -1,40 +1,42 @@
   {% csrf_token %}
-            <div class="col-4">
-                <div class="row g-2 align-items-start">
-                    <label for="name" class="form-label">Name author</label>
-                    {% if errors.name %}
-                        <input name="name" value="{{record.name}}" type="text" class="form-control" id="name">
-                        <p class="errors">{{errors.name}}</p>
-                    {% else %}
-                        <input name="name" value="{{record.name}}" type="text" class="form-control">
-                    {% endif %}
-                </div>
-            </div>
-            <br>
-            <div class="col-4">
-                <div class="row g-2 align-items-start">
-                    <label for="email" class="form-label">Email author</label>
-                    {% if errors.email %}
-                        <input name="email" value="{{record.email}}" type="text" class="form-control" id="email">
-                        <p class="errors">{{errors.email}}</p>
-                    {% else %}
-                        <input name="email" value="{{record.email}}" type="text" class="form-control">
-                    {% endif %}
-                </div>
-            </div>
-            <br>
-            <div class="col-4">
-                <div class="row g-2 align-items-start">
-                   <label for="text" class="form-label">Text</label>
-                    {% if errors.text %}
-                        <textarea name="text" class="form-control" id="text">{{record.text}}</textarea>
-                        <p class="errors">{{errors.text}}</p>
-                    {% else %}
-                        <textarea name="text" class="form-control">{{record.text}}</textarea>
-                    {% endif %}
-                </div>
-             </div>
-            <br>
-                <div class="col-3">
-                    <button type="submit" class="btn btn-primary">{{button_text}}</button>
-                </div>
+<div class="container">
+    <div class="row">
+    <div class="col-6">
+        <div class="row g-2 align-items-start">
+            <label for="name" class="form-label">Name author</label>
+            {% if errors.name %}
+                <input name="name" value="{{record.name}}" type="text" class="form-control" id="name">
+                <p class="errors">{{errors.name}}</p>
+            {% else %}
+                <input name="name" value="{{record.name}}" type="text" class="form-control">
+            {% endif %}
+        </div>
+<br>
+        <div class="row g-2 align-items-start">
+            <label for="email" class="form-label">Email author</label>
+            {% if errors.email %}
+                <input name="email" value="{{record.email}}" type="text" class="form-control" id="email">
+                <p class="errors">{{errors.email}}</p>
+            {% else %}
+                <input name="email" value="{{record.email}}" type="text" class="form-control">
+            {% endif %}
+        </div>
+    </div>
+<br>
+<div class="col-6">
+    <div class="row g-2 align-items-start">
+       <label for="text" class="form-label">Text</label>
+        {% if errors.text %}
+            <textarea name="text" class="form-control" id="text">{{record.text}}</textarea>
+            <p class="errors">{{errors.text}}</p>
+        {% else %}
+            <textarea name="text" class="form-control">{{record.text}}</textarea>
+        {% endif %}
+    </div>
+ </div>
+</div>
+<br>
+    <div class="col-3">
+        <button type="submit" class="btn btn-primary">{{button_text}}</button>
+    </div>
+</div>

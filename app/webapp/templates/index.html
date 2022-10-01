@@ -14,13 +14,17 @@
                         </div>
                     </div>
                 </form>
+                <h2> Create record in the book </h2>
+                <form action="{% url 'create' %}" method="POST">
+                   {% include 'partial/form_record.html' with button_text="Create record" %}
+                </form>
               {% for record in records %}
                 <div class="container block">
                       <div class="row justify-content-between">
                           <div class="col-4">
                               {{ record.name }} ({{ record.email }})
                           </div>
-                          <div class="col-2">
+                          <div class="col-2 ">
                               <a href="{% url 'update' record.pk %}" class="btn btn-primary bi bi-pencil-square"></a>
                               <a href="{% url 'delete' record.pk %}" class="btn btn-primary bi bi-x-square"></a>
                           </div>

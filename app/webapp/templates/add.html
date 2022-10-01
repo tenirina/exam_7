@@ -3,7 +3,7 @@
 {% block content %}
     <div class="main">
         <h2> Create record in the book </h2>
-        <form action="{% url 'create' %}" method="POST">
+        <form action="{% url 'index' %}" method="POST">
            {% include 'partial/form_record.html' with button_text="Create record" %}
         </form>
     </div>
