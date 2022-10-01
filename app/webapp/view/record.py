@@ -47,7 +47,7 @@ def update_view(request, pk):
                 'email': form.data['email'],
                 'text': form.data['text']
             }
-            return render(request, 'update.html', context={'record': record, 'errors': errors, 'pk': record.pk})
+            return render(request, 'update.html', context={'record': record, 'errors': errors})
         if form.is_valid():
             record.name = form.cleaned_data["name"]
             record.email = form.cleaned_data["email"]
