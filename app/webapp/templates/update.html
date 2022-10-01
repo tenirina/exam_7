@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <h2> Update record in the book </h2>
+        <form action="{% url 'update' record.pk %}" method="POST">
+           {% include 'partial/form_record.html' with button_text="Update record" %}
+        </form>
+    </div>
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
 from webapp.forms import RecordForm
@@ -36,4 +36,23 @@ def create_view(request):
 
 
 def update_view(request, pk):
-    return render(request, 'add.html')
+    form = RecordForm()
+    record = get_object_or_404(Book, pk=pk)
+    if request.method == "POST":
+        form = RecordForm(request.POST)
+        errors = errors_test(form)
+        if errors:
+            record = {
+                'name': form.data['name'],
+                'email': form.data['email'],
+                'text': form.data['text']
+            }
+            return render(request, 'update.html', context={'record': record, 'errors': errors, 'pk': record.pk})
+        if form.is_valid():
+            record.name = form.cleaned_data["name"]
+            record.email = form.cleaned_data["email"]
+            record.text = form.cleaned_data["text"]
+            record.save()
+            return redirect('index')
+    return render(request, 'update.html', context={'record': record, 'form': form})
+
