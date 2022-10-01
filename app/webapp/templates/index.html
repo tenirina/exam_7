@@ -4,6 +4,16 @@
     <div class="main">
             {% if records %}
                 <h2> Guest book </h2>
+                <form action="{% url 'index' %}" method="GET">
+                    <div class="row justify-content-end">
+                        <div class="col-3">
+                            <input name="search" type="search">
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                </form>
               {% for record in records %}
                 <div class="container block">
                       <div class="row justify-content-between">
@@ -11,8 +21,8 @@
                               {{ record.name }} ({{ record.email }})
                           </div>
                           <div class="col-2">
-                              <a href="{% url 'update' record.pk %}" class="btn btn-primary bi bi-file-earmark-plus"></a>
-                              <a href="{% url 'delete' record.pk %}" class="btn btn-primary bi bi-file-earmark-minus"></a>
+                              <a href="{% url 'update' record.pk %}" class="btn btn-primary bi bi-pencil-square"></a>
+                              <a href="{% url 'delete' record.pk %}" class="btn btn-primary bi bi-x-square"></a>
                           </div>
                         </div>
                         <div class="row">
