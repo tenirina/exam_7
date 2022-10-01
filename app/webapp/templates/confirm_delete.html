@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <h2> Delete record in the book </h2>
+        <div class="card">
+              <div class="card-header">
+                {{ record.name }}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ record.email }}</h5>
+                <p class="card-text">{{ record.text }}</p>
+                <form action="{% url 'confirm_delete' record.pk %}" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-primary" value="Delete">
+                    <a href="{% url 'index' %}" class="btn btn-primary">Cancel</a>
+                </form>
+              </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% csrf_token %}

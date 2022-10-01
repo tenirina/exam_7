@@ -6,12 +6,14 @@
                 <h2> Guest book </h2>
               {% for record in records %}
                 <div class="container block">
-                      <div class="row">
-                          <p>
+                      <div class="row justify-content-between">
+                          <div class="col-4">
                               {{ record.name }} ({{ record.email }})
-                              <a href="{% url 'update' record.pk %}"><button class="bi bi-link"></button></a>
-                              <a href="{% url 'create' %}"><button class="bi bi-link"></button></a>
-                          </p>
+                          </div>
+                          <div class="col-2">
+                              <a href="{% url 'update' record.pk %}" class="btn btn-primary bi bi-file-earmark-plus"></a>
+                              <a href="{% url 'delete' record.pk %}" class="btn btn-primary bi bi-file-earmark-minus"></a>
+                          </div>
                         </div>
                         <div class="row">
                             {{ record.text }}

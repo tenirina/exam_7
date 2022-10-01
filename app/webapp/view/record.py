@@ -56,3 +56,15 @@ def update_view(request, pk):
             return redirect('index')
     return render(request, 'update.html', context={'record': record, 'form': form})
 
+
+def delete_view(request, pk):
+    record = get_object_or_404(Book, pk=pk)
+    return render(request, "confirm_delete.html", context={'record': record})
+
+
+def confirm_delete_view(request, pk):
+    record = get_object_or_404(Book, pk=pk)
+    record.delete()
+    return redirect("index")
+
+

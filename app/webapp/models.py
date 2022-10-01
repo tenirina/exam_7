@@ -1,4 +1,6 @@
+
 from django.db import models
+from django.utils import timezone
 
 
 class Book(models.Model):
@@ -16,4 +18,7 @@ class Book(models.Model):
     is_delete = models.BooleanField(verbose_name="Delete", default=False, null=False)
     deleted_at = models.DateTimeField(verbose_name="Date of delete", null=True, default=None)
 
-
+    def delete(self, using=None, keep_parents=False):
+        self.deleted_at = timezone.now()
+        self.is_delete = True
+        self.save()
