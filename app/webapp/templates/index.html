@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Book</title>
-</head>
-<body>
-<p>Xnjnj kjldfkjlgkj</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+            {% if records %}
+                <h2> Guest book </h2>
+              {% for record in records %}
+                <div class="container block">
+                      <div class="row">
+                          <p>
+                              {{ record.name }} ({{ record.email }})
+                              <a href="{% url 'create' %}"><button class="bi bi-link"></button></a>
+                              <a href="{% url 'update' %}"><button class="bi bi-link"></button></a>
+                          </p>
+                        </div>
+                        <div class="row">
+                            {{ record.text }}
+                        </div>
+                </div>
+              {% endfor %}
+           {% else %}
+             <h2>Add an entry to the guest book </h2>
+           {% endif %}
+            <br>
+        </div>
+{% endblock %}

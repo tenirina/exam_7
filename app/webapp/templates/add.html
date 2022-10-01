@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="main">
+        <h2> Create record in the book </h2>
+        <form action="{% url 'index' %}" method="POST">
+             {% csrf_token %}
+            <div class="col-4">
+                <div class="row g-2 align-items-start">
+                    <label for="name" class="form-label">Name author</label>
+                    {% if errors.text %}
+                        <input name="name" value="{{record.name}}" type="text" class="form-control" id="name">
+                        <p class="errors">{{errors.text}}</p>
+                    {% else %}
+                        <input name="name" value="{{record.name}}" type="text" class="form-control">
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <div class="col-4">
+                <div class="row g-2 align-items-start">
+                    <label for="email" class="form-label">Email author</label>
+                    {% if errors.text %}
+                        <input name="email" value="{{record.email}}" type="text" class="form-control" id="email">
+                        <p class="errors">{{errors.text}}</p>
+                    {% else %}
+                        <input name="email" value="{{record.email}}" type="text" class="form-control">
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <div class="col-4">
+                <div class="row g-2 align-items-start">
+                   <label for="text" class="form-label">Text</label>
+                   <textarea name="Text" class="form-control" id="text">{{record.text}}</textarea>
+                </div>
+             </div>
+            <br>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary">{{button_text}}</button>
+                </div>
+        </form>
+    </div>
+{% endblock %}
